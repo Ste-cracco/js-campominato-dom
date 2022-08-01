@@ -90,6 +90,12 @@ body {
     color: white;
 }
 
+.punteggio {
+    padding: 20px;
+    font-size: 2rem;
+    font-weight: bolder;
+    font-family: arial;
+}
 
 
 /* FOOTER */

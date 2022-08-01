@@ -19,12 +19,6 @@ function creaGriglia() {
     }
 }
 
-function resetGame () {
-    grigliaElement.innerHTML = '';
-    divPunteggio.innerHTML = '';
-    punteggio = 0;
-}
-
 function creaCella() {
     const divCella = document.createElement('div');
     divCella.classList.add('cella');
@@ -40,9 +34,7 @@ function gestoreClick() {
 
     if(posizioniBombe.includes(numeroCella)) {
         this.classList.add('bomba')
-        divPunteggio.append('Il tuo punteggio è di: ', punteggio)
-        const celle = cella.querySelectorAll('.cella')
-        celle.removeEventListener('click', gestoreClick)
+        gameOver()
     }
     else {       
         punteggio++    
@@ -66,6 +58,17 @@ function creaBomba() {
     return bombe    
 }
 
+function resetGame () {
+    grigliaElement.innerHTML = '';
+    divPunteggio.innerHTML = '';
+    punteggio = 0;
+}
+
 function gameOver () {
-    cella.querySelectorAll('.cella')
+    divPunteggio.append('GAME OVER - Il tuo punteggio è di: ', punteggio)
+    const celle = document.querySelectorAll('.cella')
+    for( let i = 0; i < celle.length; i++) {
+        const cella = celle[i]
+        cella.removeEventListener('click', gestoreClick)
+    }
 }
