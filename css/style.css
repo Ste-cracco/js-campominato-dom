@@ -66,10 +66,10 @@ body {
 
 .container_griglia {
     width: 800px;
-    min-height: 800px;
+    min-height: 80vh;
     margin: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     padding: 60px 0;
 }
 
@@ -78,11 +78,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-basis: calc(100% / 10);
     aspect-ratio: 1/1;
 }
 
 .active {
     background-color: green;
+    color: white;
 }
 
 .bomba {
@@ -95,6 +97,7 @@ body {
     font-size: 2rem;
     font-weight: bolder;
     font-family: arial;
+    text-align: center;
 }
 
 

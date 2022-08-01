@@ -1,22 +1,40 @@
 const grigliaElement = document.querySelector('.container_griglia');
 const buttonElement = document.querySelector('.bottone_play');
 buttonElement.addEventListener('click', creaGriglia)
+const difficoltaElement = document.querySelector('select[name="bottone_difficolta"]')
 const divPunteggio = document.querySelector('.punteggio')
 
 let posizioniBombe = []
 let punteggio = 0
-const cella = creaCella()
+
 
 function creaGriglia() {
     resetGame()
+    const difficoltaSelezionata = difficoltaElement.value
+    let dimensione = calcoloDimensioneGriglia(difficoltaSelezionata)
+    const numeroCelle = dimensione ** 2 // al quadrato
+
     posizioniBombe = creaBomba()
     console.log('Bombe:', posizioniBombe)
     
-    for(let i = 0; i < 100; i++) {        
+    for(let i = 0; i < numeroCelle; i++) {        
         const cella = creaCella();
+        cella.style.flexBasis = `${100 / dimensione}%`
+
         cella.innerHTML = i + 1;
         grigliaElement.append(cella);                
     }
+}
+
+function calcoloDimensioneGriglia(difficolta) {
+    let dimensione = 10
+    if (difficolta === "intermedio") {
+        dimensione = 9
+    }
+    else if (difficolta === "difficile"){
+        dimensione = 7        
+    }
+    return dimensione
 }
 
 function creaCella() {
