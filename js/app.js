@@ -21,6 +21,8 @@ function creaGriglia() {
 
 function resetGame () {
     grigliaElement.innerHTML = '';
+    divPunteggio.innerHTML = '';
+    punteggio = 0;
 }
 
 function creaCella() {
@@ -38,8 +40,8 @@ function gestoreClick() {
 
     if(posizioniBombe.includes(numeroCella)) {
         this.classList.add('bomba')
-        cella.removeEventListener('click', gestoreClick) 
-        divPunteggio.append('Il tuo punteggio è di: ',punteggio)
+        divPunteggio.append('Il tuo punteggio è di: ', punteggio)
+        cella.removeEventListener('click', gestoreClick)
     }
     else {       
         punteggio++    
@@ -61,4 +63,8 @@ function creaBomba() {
         }
     }  
     return bombe    
+}
+
+function gameOver () {
+    cella.querySelectorAll('.cella')
 }
