@@ -41,7 +41,8 @@ function gestoreClick() {
     if(posizioniBombe.includes(numeroCella)) {
         this.classList.add('bomba')
         divPunteggio.append('Il tuo punteggio è di: ', punteggio)
-        cella.removeEventListener('click', gestoreClick)
+        const celle = cella.querySelectorAll('.cella')
+        celle.removeEventListener('click', gestoreClick)
     }
     else {       
         punteggio++    
